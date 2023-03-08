@@ -4,10 +4,15 @@ import { useEffect, useState } from 'react';
 import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
 import CardComponent from './components/CardComponent';
 import blankHead from './images/blankhead.jpg'
+import ModalComponent from './components/ModalComponent';
+
+
+
 function App() {
   const [search, setSearch] = useState(false);
   const [ownerAddress, setOwnerAddress] = useState("");
   const [ownerCollection, setOwnerCollection] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
 
 
   const config = {
@@ -47,6 +52,15 @@ function App() {
     setOwnerAddress(e.target.value)
   };
 
+  const openModalAction = (e) => {
+    setModalOpen(true)
+  };
+
+  const closeModalAction = (e) => {
+    setModalOpen(false)
+  };
+
+
   return (
     <div >
       <div style={{ margin: "3rem", display: "flex", justifyContent: "center" }}>
@@ -62,10 +76,21 @@ function App() {
       <Grid container style={{ display: "flex", justifyContent: "center" }}>
         {ownerCollection.map((nft, index) => (
           <div>
-            <CardComponent key={index} img={nft.contract.openSea.imageUrl || blankHead} description={nft.contract.openSea.description} name={nft.contract.openSea.collectionName} />
-
+            <CardComponent
+              openModalAction={openModalAction}
+              key={index}
+              img={nft.contract.openSea.imageUrl || blankHead}
+              description={nft.contract.openSea.description}
+              name={nft.contract.openSea.collectionName}
+              index={index}
+            />
           </div>
         ))}
+        <ModalComponent
+          open={modalOpen}
+          onClose={closeModalAction}
+
+        />
       </Grid>
     </div >
 
