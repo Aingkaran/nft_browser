@@ -5,9 +5,7 @@ import blankHead from '../../images/blankhead.jpg'
 
 const ModalComponent = (props) => {
     const { open, onClose, clickedNFT } = props
-    // const img = clickedNFT.contract.openSea.imageUrl || blankHead
-    // const description = clickedNFT.contract.openSea.description
-    // const name = clickedNFT.contract.openSea.collectionName
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -19,6 +17,17 @@ const ModalComponent = (props) => {
         border: '2px solid #000',
         boxShadow: 24,
         p: 4,
+        textAlign: "center"
+    };
+    const mediumScreenStyle = {
+        width: "50%",
+        height: "70%",
+        overflow: "auto"
+    };
+    const smallScreenStyle = {
+        width: "80%",
+        height: "70%",
+        overflow: "auto"
     };
     console.log(clickedNFT)
     return (
@@ -29,7 +38,15 @@ const ModalComponent = (props) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box sx={style}>
+                <Box sx={{
+                    ...style,
+                    '@media (max-width: 1200px)': mediumScreenStyle,
+                    '@media (max-width: 768px)': smallScreenStyle,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                         {clickedNFT.contract.name}
                     </Typography>
@@ -42,16 +59,23 @@ const ModalComponent = (props) => {
                             justifyContent: "center",
                             alignItems: "center"
                         }}
-                        src={clickedNFT.contract.openSea.imageUrl}
+                        src={clickedNFT.contract.openSea.imageUrl || blankHead}
                     />
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Contract Address : {clickedNFT.contract.address}
+                    <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold" }}>
+                        Contract Address
                     </Typography>
-
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Description : {clickedNFT.contract.openSea.description}
+                    <Typography id="modal-modal-description" sx={{ wordWrap: 'break-word' }}>
+                        {clickedNFT.contract.address}
                     </Typography>
-                    <Button component="a"
+                    <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold" }}>
+                        Description
+                    </Typography>
+                    <Typography id="modal-modal-description" sx={{ wordWrap: 'break-word' }}>
+                        {clickedNFT.contract.openSea.description}
+                    </Typography>
+                    <Button
+                        sx={{ mt: 2, fontWeight: "bold" }}
+                        component="a"
                         href={`https://opensea.io/assets/ethereum/${clickedNFT.contract.address}/${clickedNFT.tokenId}`}
                         variant="contained"
                         size="large"
