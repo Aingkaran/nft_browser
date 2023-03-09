@@ -1,16 +1,14 @@
 import './App.css';
 import { Network, Alchemy } from 'alchemy-sdk';
-import { useEffect, useState } from 'react';
-import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography, Button, TextField, Box } from '@mui/material';
+import { useState } from 'react';
+import { Grid, Typography, Button, TextField, Box } from '@mui/material';
 import CardComponent from './components/CardComponent';
 import blankHead from './images/blankhead.jpg'
 import ModalComponent from './components/ModalComponent';
-import { styled } from '@mui/material/styles';
 
 
 
 function App() {
-  const [search, setSearch] = useState(false);
   const [ownerAddress, setOwnerAddress] = useState("");
   const [ownerCollection, setOwnerCollection] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -41,10 +39,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-
-
-  }, [search])
 
   const handleSubmit = (e) => {
     e.preventDefault()

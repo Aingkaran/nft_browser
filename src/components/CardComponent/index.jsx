@@ -1,8 +1,8 @@
 import './style.css'
-import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography, CardHeader, Avatar, IconButton } from '@mui/material';
+import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography, CardHeader } from '@mui/material';
 
 const CardComponent = (props) => {
-    const { img, description, name, index, openModalAction, nft } = props;
+    const { img, name, openModalAction, nft } = props;
 
     return (
         <>
@@ -38,7 +38,6 @@ const CardComponent = (props) => {
                         <CardContent >
                             <Typography gutterBottom component="div" sx={{
                                 color: "#58D0EA", fontWeight: "bold", textAlign: 'center', wordWrap: 'break-word', fontSize: '20px'
-
                             }}>
                                 {name}
                             </Typography>
