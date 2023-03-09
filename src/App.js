@@ -7,16 +7,16 @@ import blankHead from './images/blankhead.jpg'
 import ModalComponent from './components/ModalComponent';
 
 
-
 function App() {
   const [search, setSearch] = useState(false);
   const [ownerAddress, setOwnerAddress] = useState("");
   const [ownerCollection, setOwnerCollection] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [clickedNFT, setClickedNFT] = useState({});
 
 
   const config = {
-    apiKey: "Lc65gGXOYJ1LANkb3m83-uZ2_AhJUxXn",
+    apiKey: process.env.REACT_APP_API_KEY,
     network: Network.ETH_MAINNET,
   };
 
@@ -52,8 +52,10 @@ function App() {
     setOwnerAddress(e.target.value)
   };
 
-  const openModalAction = (e) => {
+  const openModalAction = (nft) => {
     setModalOpen(true)
+    setClickedNFT(nft)
+    console.log(nft)
   };
 
   const closeModalAction = (e) => {
@@ -62,7 +64,7 @@ function App() {
 
 
   return (
-    <div >
+    <div class="container">
       <div style={{ margin: "3rem", display: "flex", justifyContent: "center" }}>
         <form onSubmit={handleSubmit}>
           <label>
@@ -83,14 +85,16 @@ function App() {
               description={nft.contract.openSea.description}
               name={nft.contract.openSea.collectionName}
               index={index}
+              nft={nft}
             />
           </div>
         ))}
-        <ModalComponent
+        {clickedNFT.contract ? (<ModalComponent
           open={modalOpen}
           onClose={closeModalAction}
+          clickedNFT={clickedNFT}
 
-        />
+        />) : null}
       </Grid>
     </div >
 
