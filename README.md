@@ -1,5 +1,5 @@
-# Aingkaran's NFT Browser
-[a link](https://aingkaran.github.io/nft_browser/)
+# Aingkaran's NFT Browser - LIVE DEMO CLICK BELOW
+[LIVE DEMO](https://aingkaran.github.io/nft_browser/)
 
 ## General Comments
     Fun project used Alchemy's SDK to pull NFT token data from users Ethereum Address.
