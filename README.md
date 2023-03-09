@@ -34,6 +34,11 @@
 
 ### 4. Visually appealing and easy to use &#9745; &#9745;
 
+## ERROR Handling
+I have an alert set up for the user incase they submit an ethereum address that is not in the right format.
+![errorhandling](https://user-images.githubusercontent.com/66233482/223952383-026f31d6-056d-480d-a1b2-cb8f850cc269.JPG)
+
+
 ## Testing
 Testing done on the input. Checked whether the input value was stored in the correct variable. 
 
