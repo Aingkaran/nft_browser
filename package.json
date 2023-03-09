@@ -1,7 +1,7 @@
 {
   "name": "nft_browser",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -24,6 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "homepage": "https://aingkaran.github.io/nft_browser",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
