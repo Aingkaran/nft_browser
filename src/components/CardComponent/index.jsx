@@ -7,21 +7,22 @@ const CardComponent = (props) => {
     return (
         <>
             <Grid >
-                <Card sx={{ maxWidth: 200, height: 400, margin: "1rem", borderRadius: '20px', borderColor: 'red' }} >
-                    <CardHeader
-                        sx={{ maxHeight: 50, margin: "1rem" }}
-                        avatar={
-                            <Avatar sx={{ bgcolor: '#F65AE2' }} aria-label="recipe">
-                                {`#${index}`}
-                            </Avatar>
-                        }
-                        action={
-                            <IconButton aria-label="settings">
+                <Card sx={{
+                    maxWidth: 200, height: 400, margin: "1rem", borderRadius: '20px', border: '4px solid #F65AE2', backgroundColor: ' black', wordWrap: 'break-word',
 
-                            </IconButton>
-                        }
-                        title={name}
-                        subheader="from Collection"
+                }} >
+                    <CardHeader
+                        sx={{
+                            margin: "1rem",
+                            wordWrap: 'break-word',
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            color: "#58D0EA",
+                            display: 'flex',
+                            justifyContent: 'center'
+
+                        }}
+                        title={`#${nft.tokenId}`}
                     />
                     <CardActionArea>
                         <CardMedia
@@ -29,15 +30,18 @@ const CardComponent = (props) => {
                             image={img}
                             alt=""
                             onClick={() => openModalAction(nft)}
-
+                            sx={{
+                                border: '1px solid #F65AE2',
+                                minHeight: '200px'
+                            }}
                         />
-                        <CardContent sx={{ backgroundColor: "black" }}>
-                            <Typography gutterBottom variant="h5" component="div" sx={{ color: "#58D0EA", fontWeight: "bold" }}>
+                        <CardContent >
+                            <Typography gutterBottom component="div" sx={{
+                                color: "#58D0EA", fontWeight: "bold", textAlign: 'center', wordWrap: 'break-word', fontSize: '20px'
+
+                            }}>
                                 {name}
                             </Typography>
-                            {/* <Typography variant="body2" color="text.secondary">
-                                This is an nft description that i'll be using to describe the nft
-                            </Typography> */}
                         </CardContent>
                     </CardActionArea>
                 </Card>

@@ -1,10 +1,12 @@
 import './App.css';
 import { Network, Alchemy } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
-import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography } from '@mui/material';
+import { Grid, Card, CardActionArea, CardMedia, CardContent, Typography, Button, TextField, Box } from '@mui/material';
 import CardComponent from './components/CardComponent';
 import blankHead from './images/blankhead.jpg'
 import ModalComponent from './components/ModalComponent';
+import { styled } from '@mui/material/styles';
+
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
   const [ownerCollection, setOwnerCollection] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [clickedNFT, setClickedNFT] = useState({});
+  const ethereumAddressPattern = /^(0x)?[0-9a-fA-F]{40}$/;
 
 
   const config = {
@@ -45,6 +48,10 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (!ethereumAddressPattern.test(ownerAddress)) {
+      alert("Invalid Ethereum address");
+      return;
+    }
     runMain(ownerAddress)
   };
 
@@ -63,17 +70,64 @@ function App() {
   };
 
 
+
+
   return (
-    <div class="container">
-      <div style={{ margin: "3rem", display: "flex", justifyContent: "center" }}>
+    <Box class="container">
+      <Box sx={{ margin: "1rem", display: "flex", justifyContent: "center", mb: 5, }}>
         <form onSubmit={handleSubmit}>
-          <label>
-            NFT Owner Name
-            <input type="text" value={ownerAddress} onChange={handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
+          <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+            <Typography sx={{
+              fontSize: '3rem',
+              fontWeight: 'bold',
+              color: '#58D0EA',
+              textAlign: 'center',
+            }}>AINGKARAN'S</Typography>
+            <Typography sx={{
+              fontSize: '2rem',
+              fontWeight: 'bold',
+              color: '#F65AE2',
+              textAlign: 'center',
+            }}>NFT BROWSER</Typography>
+            <Typography sx={{
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              color: '#E2E8F6',
+              textAlign: 'center',
+              marginBottom: '1rem',
+              border: '2px solid white'
+            }}>Enter Your Wallet Address</Typography>
+            <TextField id="standard-error-helper-text"
+              label="Address" variant="filled" value={ownerAddress} onChange={handleChange}
+              sx={{
+                backgroundColor: '#fff',
+                borderRadius: '4px',
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: '#58D0EA',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: '#F65AE2',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: '#58D0EA',
+                  },
+                },
+              }} />
+            <Button sx={{
+              mt: 2,
+              fontWeight: "bold",
+              bgcolor: '#58D0EA',
+              '&:hover': {
+                bgcolor: '#F65AE2',
+              },
+            }}
+              variant='contained'
+              type="submit">
+              SUBMIT</Button>
+          </Box>
         </form>
-      </div>
+      </Box >
 
       <Grid container style={{ display: "flex", justifyContent: "center" }}>
         {ownerCollection.map((nft, index) => (
@@ -96,7 +150,7 @@ function App() {
 
         />) : null}
       </Grid>
-    </div >
+    </Box >
 
 
   );

@@ -2,6 +2,7 @@ import './style.css'
 import { Button, Modal, Typography, Box } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import blankHead from '../../images/blankhead.jpg'
+import CloseIcon from '@mui/icons-material/Close';
 
 const ModalComponent = (props) => {
     const { open, onClose, clickedNFT } = props
@@ -12,22 +13,28 @@ const ModalComponent = (props) => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: '25%',
-        height: '70%',
         bgcolor: 'background.paper',
-        border: '2px solid #000',
         boxShadow: 24,
         p: 4,
-        textAlign: "center"
+        textAlign: "center",
+        borderRadius: "20px",
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "black",
+        border: '4px solid #F65AE2',
+        maxWidth: '100%',
+
+
+
     };
     const mediumScreenStyle = {
         width: "50%",
-        height: "70%",
-        overflow: "auto"
     };
     const smallScreenStyle = {
         width: "80%",
-        height: "70%",
-        overflow: "auto"
+        maxHeight: '90%'
     };
     console.log(clickedNFT)
     return (
@@ -37,17 +44,30 @@ const ModalComponent = (props) => {
                 onClose={onClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
+                BackdropProps={{ sx: { backgroundColor: 'rgba(255, 255, 255, 0.5)' } }}
+
             >
                 <Box sx={{
                     ...style,
                     '@media (max-width: 1200px)': mediumScreenStyle,
-                    '@media (max-width: 768px)': smallScreenStyle,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center'
+                    '@media (max-width: 768px)': smallScreenStyle
                 }}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
+                    <Button
+                        onClick={onClose}
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            right: 0,
+                            m: 1,
+                            color: '#58D0EA',
+                            '&:hover': {
+                                color: '#F65AE2',
+                            },
+                        }}
+                    >
+                        <CloseIcon />
+                    </Button>
+                    <Typography id="modal-modal-title" variant="h8" component="h2" mb={2} sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold", color: "#58D0EA" }}>
                         {clickedNFT.contract.name}
                     </Typography>
                     <Box
@@ -57,24 +77,33 @@ const ModalComponent = (props) => {
                             width: "70%",
                             display: "flex",
                             justifyContent: "center",
-                            alignItems: "center"
+                            alignItems: "center",
+                            border: '4px solid #F65AE2'
+
                         }}
                         src={clickedNFT.contract.openSea.imageUrl || blankHead}
                     />
-                    <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold" }}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold", color: "#58D0EA" }}>
                         Contract Address
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ wordWrap: 'break-word' }}>
+                    <Typography id="modal-modal-description" sx={{ wordWrap: 'break-word', color: "white" }}>
                         {clickedNFT.contract.address}
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold" }}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold", color: "#58D0EA" }}>
                         Description
                     </Typography>
-                    <Typography id="modal-modal-description" sx={{ wordWrap: 'break-word' }}>
-                        {clickedNFT.contract.openSea.description}
+                    <Typography id="modal-modal-description" sx={{ wordWrap: 'break-word', color: "white" }}>
+                        {clickedNFT.contract.openSea.description || "Not Available"}
                     </Typography>
                     <Button
-                        sx={{ mt: 2, fontWeight: "bold" }}
+                        sx={{
+                            mt: 2,
+                            fontWeight: "bold",
+                            bgcolor: '#58D0EA',
+                            '&:hover': {
+                                bgcolor: '#F65AE2',
+                            },
+                        }}
                         component="a"
                         href={`https://opensea.io/assets/ethereum/${clickedNFT.contract.address}/${clickedNFT.tokenId}`}
                         variant="contained"
