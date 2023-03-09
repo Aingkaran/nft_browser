@@ -1,5 +1,9 @@
 # Aingkaran's NFT Browser
 
+## General Comments
+    Fun project used Alchemy's SDK to pull NFT token data from users Ethereum Address.
+    Used material UI for styling and React components to organize my code. 
+    Used React Testing Library and Jest to test code. 
 ## Dependencies
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -34,16 +38,16 @@ Testing done on the input. Checked whether the input value was stored in the cor
 
 ![testcase](https://user-images.githubusercontent.com/66233482/223938214-4b936f7f-9714-4cdf-a265-2732027ba706.JPG)
 
-###Test Result
+### Test Result
 ![test](https://user-images.githubusercontent.com/66233482/223938300-1be3ea2c-f6fb-46a1-892f-c0f469859a93.JPG)
 
-##Mobile Friendly?....Yes! 
-
-
+## Mobile Friendly?...YES!
+![mobileBrowse](https://user-images.githubusercontent.com/66233482/223943345-93bf9c4a-6c9b-41aa-9753-8a0e7811ba7b.JPG)
+![mobileModal](https://user-images.githubusercontent.com/66233482/223943356-d8952c39-c836-4dfe-a550-b66b8110bb3b.JPG)
 
 ## Improvements
-With additional time I would make the following improvements:
-    - more testing parameters 
-    - more details in the modal page. I would like to see if I can get more of the key properties of the NFTs to be displayed nicely
-    - Some of the pages go to an openSea page that's not valid anymore. I would like to see if I can catch that error or display that warning before the user clicks         the buy button
-    -
+### With additional time I would make the following improvements:
+    -more testing parameters" ,
+    -more details in the modal page. I would like to see if I can get more of the key properties of the NFTs to be displayed nicely",
+    -some of the pages go to an openSea page that's not valid anymore. I would like to see if I can catch that error or display that warning before the user clicks the buy button
+    
