@@ -1,4 +1,9 @@
-# Aingkaran's NFT Browser
+# Aingkaran's NFT Browser - LIVE DEMO CLICK BELOW
+[LIVE DEMO](https://aingkaran.github.io/nft_browser/)
+
+### Test Addresses:
+    0x1D9bBE22C3710676214C96191E7fDF7Ae067EB4a
+    0xd1816C9283e623663ea5a96f2435e565F627d1F1
 
 ## General Comments
     Fun project used Alchemy's SDK to pull NFT token data from users Ethereum Address.
@@ -32,6 +37,11 @@
 ![opensea page](https://user-images.githubusercontent.com/66233482/223936925-0e9621ff-7863-4264-bf2c-ca6b222d61b6.JPG)
 
 ### 4. Visually appealing and easy to use &#9745; &#9745;
+
+## ERROR Handling
+I have an alert set up for the user incase they submit an ethereum address that is not in the right format.
+![errorhandling](https://user-images.githubusercontent.com/66233482/223952383-026f31d6-056d-480d-a1b2-cb8f850cc269.JPG)
+
 
 ## Testing
 Testing done on the input. Checked whether the input value was stored in the correct variable. 
