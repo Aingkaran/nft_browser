@@ -81,7 +81,7 @@ const ModalComponent = (props) => {
                             border: '4px solid #F65AE2'
 
                         }}
-                        src={clickedNFT.contract.openSea.imageUrl || blankHead}
+                        src={clickedNFT?.media[0]?.gateway || clickedNFT?.contract?.openSea?.imageUrl}
                     />
                     <Typography id="modal-modal-description" sx={{ mt: 2, wordWrap: 'break-word', fontWeight: "bold", color: "#58D0EA" }}>
                         Contract Address

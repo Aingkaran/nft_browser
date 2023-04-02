@@ -129,7 +129,7 @@ function App() {
             <CardComponent
               openModalAction={openModalAction}
               key={index}
-              img={nft.contract.openSea.imageUrl || blankHead}
+              img={nft?.media[0]?.gateway || nft?.contract?.openSea?.imageUrl || blankHead}
               description={nft.contract.openSea.description}
               name={nft.contract.openSea.collectionName}
               index={index}
